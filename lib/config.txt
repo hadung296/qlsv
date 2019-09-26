@@ -1,0 +1,5 @@
+DB
+HOST     = 'localhost';
+USERNAME = 'qlsv';
+PASSWORD = '123456';
+DATABASE = 'qlsv';
