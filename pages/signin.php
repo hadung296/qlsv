@@ -1,8 +1,11 @@
 <?php
-   include("../lib/connectDB.php");
-   session_start();
+  <link href="/qlsv/bootstrap/css/bootstrap.min.css" rel="stylesheet" style="text/css">
+  <script src="/qlsv/bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
+
+  include("../lib/connectDB.php");
+  session_start();
    
-   if(isset($_POST['signin'])){
+  if(isset($_POST['signin'])){
     if ( empty($_POST['txtusername']) or empty($_POST['txtpasswd'])) { echo ' </br> <p style="color:red"> vui lòng nhập đầy đủ username và password !</p>';}
     else
     {
@@ -13,7 +16,11 @@
       $num = mysqli_num_rows($result);
       if($num==0)
         {
-          echo'</br> <p style="color:red"> Sai tên đăng nhập hoặc mật khẩu ! </p>';
+          // echo'</br> <p style="color:red"> Sai tên đăng nhập hoặc mật khẩu ! </p>';
+          <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Warning!</strong> Sai tên đăng nhâp hoặc mật khẩu.
+          </div>
         }
       else {
 
