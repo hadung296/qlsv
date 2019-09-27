@@ -1,8 +1,7 @@
 <?php
-session_start();
-unset($_SESSION['username']);
-session_destroy();
-
-header("Location: ../pages/signin.php");
-exit;
+   session_start();
+   if(session_destroy())
+   {
+      header("Location: /qlsv/signin.php");
+   }
 ?>
