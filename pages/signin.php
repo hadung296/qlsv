@@ -1,5 +1,7 @@
 <?php
 include("../lib/connectDB.php");
+include("../lib/helper.php");
+
 session_start();
 
 if (isset($_POST['signin'])) {
@@ -10,13 +12,22 @@ if (isset($_POST['signin'])) {
     $mypassword = $_POST['txtpasswd'];
     $query = "SELECT * FROM account where Username = '$myusername' and Pass = '$mypassword'";
     $result = mysqli_query($connectDB, $query);
+    //Hàm này mới lấy ra kết quả
     $num = mysqli_num_rows($result);
+    $result = $result->fetch_assoc();
     if ($num == 0) {
       echo '</br> <p style="color:red"> Sai tên đăng nhập hoặc mật khẩu ! </p>';
     } else {
-
       $_SESSION['username'] = $myusername;
-      header('location: ../home.php');
+      $_SESSION['is_teacher'] = $result['Is_teacher'];
+      if(is_teacher()) {
+        //dd($result);
+        //dd("Tao la teacher.");
+        header('location: profile.php');
+      } else {
+        //dd("May la hocj sinh. m deo co quyen");
+        header('location: profile.php');
+      }
     }
   }
 mysqli.close($connectDB);

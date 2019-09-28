@@ -1,3 +1,24 @@
+<?php
+include("../lib/connectDB.php");
+include("../lib/helper.php");
+
+session_start();
+
+check_session();
+
+$username = $_SESSION['username'];
+$query = "SELECT * FROM account where Username = '$username'";
+$result = mysqli_query($connectDB, $query);
+//Hàm này mới lấy ra kết quả
+$num = mysqli_num_rows($result);
+$result = $result->fetch_assoc();
+if ($num == 0) {
+  echo '</br> <p style="color:red"> Khong co du lieu ! </p>';
+} else {
+  //dd($result);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +47,7 @@
                     <a class="nav-link" href="#">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Thông tin sinh viên</a>
+                    <a class="nav-link" href='student.php'>Thông tin sinh viên</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Thông tin giảng viên</a>
@@ -49,6 +70,9 @@
                         <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="../lib/signout.php">SignOut</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -66,8 +90,20 @@
                             </div>
                             <div class="col-sm-9 col-md-6 col-lg-8">
                                 <div class="card-body">
-                                    <h4 class="card-title">John Doe</h4>
-                                    <p class="card-text">Some example text.</p>
+                                    <h4 class="card-title">
+                                        <?php
+                                        $ten= $result['Name'];
+                                        $sdt = $result['Phone'];
+                                        $mail = $result['Email'];
+                                        $khoa = $result['Khoa'];
+
+                                        echo "Họ tên: $ten <br>";
+                                        echo "Số điện thoại: $sdt <br>";
+                                        echo "Email: $mail <br>";
+                                        echo "Khoa: $khoa <br>";
+                                        ?>
+                                    </h4>
+                                    <p class="card-text"></p>
                                 </div>
                             </div>
                         </div>

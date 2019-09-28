@@ -17,13 +17,17 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $is_teacher = $_POST['is_teacher'];
+    $name=$_POST['name'];
+    $phone=$_POST['phone'];
+    $mail=$_POST['mail'];
+    $khoa=$_POST['khoa'];
     // Validate Thông Tin Username và Email có bị trùng hay không
 
     // Kết nối CSDL
     mysqli_set_charset($connectDB, "utf8");
 
     // Kiểm tra username hoặc email có bị trùng hay không
-    $query = "SELECT * FROM account WHERE Username = '$username' and Pass = '$password'and Is_teacher='$is_teacher'";
+    $query = "SELECT * FROM account WHERE Username = '$username' and Pass = '$password'and Is_teacher='$is_teacher' and Name='$name' and Phone='$phone' and Email='$mail' and Khoa='$khoa'";
 
     // Thực thi câu truy vấn
     $result = mysqli_query($connectDB, $query);
@@ -38,7 +42,7 @@ if (isset($_POST['register'])) {
     } 
     else {
         // Ngược lại thì thêm bình thường
-        $insert = "INSERT INTO account (`Username`, `Pass`, `Is_teacher`) VALUES ('$username','$password','$is_teacher')";
+        $insert = "INSERT INTO account (`Username`, `Pass`, `Is_teacher`,`Name`,`Phone`,`Email`,`Khoa`) VALUES ('$username','$password','$is_teacher','$name','$phone','$mail','$khoa')";
 
         if (mysqli_query($connectDB, $insert)) {
             echo '<script language="javascript">alert("Đăng ký thành công"); window.location="signin.php";</script>';
@@ -83,13 +87,37 @@ mysqli.close($connectDB);
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="is_teacher">Role</label>
+                    <label for="is_teacher">Vai trò</label>
                     <input class="form-control" id="is_teacher" type="int" placeholder="teacher is 1 - student is 0" name="is_teacher">
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <label for="InputPassword">Password</label>
-                        <input class="form-control" id="InputPassword1" type="password" name="password">
+                        <input class="form-control" id="InputPassword" type="password" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label for="InputName">Họ tên</label>
+                        <input class="form-control" id="InputName" type="text" name="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label for="InputPhone">Số điện thoại</label>
+                        <input class="form-control" id="InputPhone" type="number" name="phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label for="InputEmail">Email</label>
+                        <input class="form-control" id="InputEmail" type="text" name="mail">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label for="InputKhoa">Khoa</label>
+                        <input class="form-control" id="InputKhoa" type="text" name="khoa">
                     </div>
                 </div>
             </div>

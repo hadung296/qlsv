@@ -23,7 +23,7 @@
                     <!-- <a class="nav-link" href='profile.php?id=$ID'><input id='btnHome' type='button' value='HOME'>HOME</a> -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="student.php?id=$ID">Thông tin sinh viên</a>
+                    <a class="nav-link active" href='student.php'>Thông tin sinh viên</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Thông tin giảng viên</a>
@@ -35,7 +35,7 @@
                     <a class="nav-link" href="#">Danh mục bài tập</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Upload bai tập</a>
+                    <a class="nav-link" href="">Upload bai tập</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
@@ -46,6 +46,9 @@
                         <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="../lib/signout.php">SignOut</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -67,7 +70,7 @@
                 <tbody>
                     <?php
                         include ("../lib/connectDB.php");
-                        $query = "SELECT * FROM student";
+                        $query = "SELECT * FROM account";
                         $result = mysqli_query($connectDB, $query);
 							if(mysqli_num_rows($result) > 0){
 								$i=0;
@@ -78,7 +81,7 @@
                                     $sdt = $r['Phone'];
                                     $mail = $r['Email'];
                                     $khoa = $r['Khoa'];
-
+                                    echo "<tr>";
                                     echo "<td>$sinhvienID</td>";
                                     echo "<td>$ten</td>";
                                     echo "<td>$sdt</td>";
@@ -89,9 +92,11 @@
                                     <a href='#'><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
                                     <a href='#'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
                                     </td>";
-    
+                                    echo"</tr>";
+                                    
                                 }
                             }
+                        
 					?>
                 </tbody>
                 </table>
