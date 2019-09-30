@@ -17,6 +17,7 @@ if ($num == 0) {
 } else {
   //dd($result);
 }
+//mysqli.close($connectDB);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +51,7 @@ if ($num == 0) {
                     <a class="nav-link" href='student.php'>Thông tin sinh viên</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Thông tin giảng viên</a>
+                    <a class="nav-link" href="teacher.php">Thông tin giảng viên</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
@@ -92,6 +93,7 @@ if ($num == 0) {
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <?php
+                                        $ID=$result['ID'];
                                         $ten= $result['Name'];
                                         $sdt = $result['Phone'];
                                         $mail = $result['Email'];

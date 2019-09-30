@@ -8,8 +8,8 @@ function dd($var)
 
 function is_teacher()
 {
-    return ($_SESSION['is_teacher'] == 1) ? true : false;
-}
+     return ($_SESSION['is_teacher'] == 1) ? true : false;
+ }
 
 function check_session()
 {
@@ -20,3 +20,13 @@ function check_session()
         exit;
     }
 }
+
+
+// function isAdmin()
+// {
+// if (isset($_SESSION['username']) && $_SESSION['username']['user_type'] == 'admin' ) {
+// return true;
+// }else{
+// return false;
+// }
+// }

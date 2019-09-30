@@ -9,6 +9,8 @@
     <title>Home</title>
 </head>
 <body>
-    
+    <?php
+        header("Location: pages/signin.php");
+    ?>
 </body>
 </html>
