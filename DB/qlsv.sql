@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 28, 2019 lúc 09:23 PM
--- Phiên bản máy phục vụ: 10.4.6-MariaDB
--- Phiên bản PHP: 7.3.9
+-- Host: 127.0.0.1
+-- Generation Time: Oct 01, 2019 at 01:20 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `qlsv`
+-- Database: `qlsv`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
@@ -37,36 +37,111 @@ CREATE TABLE `account` (
   `Phone` int(11) NOT NULL,
   `Email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `Khoa` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Avarta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `account`
+-- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`ID`, `Username`, `Pass`, `Is_teacher`, `Name`, `Phone`, `Email`, `Khoa`, `Avarta`) VALUES
-(5, 'dung.ha', 'dung', 0, 'hà mạnh dũng', 123456789, 'hadung2906@gmail.com', 'ATTT', NULL),
-(6, 'admin', 'admin', 1, 'admin', 987654321, 'admin@gmail.com', 'CNTT', NULL);
+INSERT INTO `account` (`ID`, `Username`, `Pass`, `Is_teacher`, `Name`, `Phone`, `Email`, `Khoa`, `Avatar`) VALUES
+(6, 'admin', 'admin', 1, 'Le van admin', 987654321, 'admin@gmail.com', 'CNTT', 'user1.png'),
+(7, 'dung', 'dung', 0, 'Ha Manh Dung', 113, '113@gmail.com', 'ATTT', 'user3.jpg'),
+(24, 'demo', 'demo', 0, 'Tran Van Demo', 119, '119@gmail.com', 'CNTT', 'logoVT.png');
+
+-- --------------------------------------------------------
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Table structure for table `exam`
+--
+
+CREATE TABLE `exam` (
+  `ID` int(11) NOT NULL,
+  `file_path` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `tearcher_user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `ID` int(11) NOT NULL,
+  `user_id_sent` int(11) NOT NULL,
+  `user_id_receive` int(11) NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_upload`
+--
+
+CREATE TABLE `student_upload` (
+  `ID` int(11) NOT NULL,
+  `student_user_id` int(11) NOT NULL,
+  `file_path` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `exam_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `account`
+-- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- Indexes for table `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `student_upload`
+--
+ALTER TABLE `student_upload`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `account`
+-- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `exam`
+--
+ALTER TABLE `exam`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `student_upload`
+--
+ALTER TABLE `student_upload`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
