@@ -71,6 +71,7 @@
                     <?php
                         include ("../lib/connectDB.php");
                         include ("../lib/helper.php");
+                        session_start();
                         $query = "SELECT * FROM account WHERE Is_teacher = '0'";
                         $result = mysqli_query($connectDB, $query);
                         mysqli_set_charset($connectDB, "utf8");
@@ -88,21 +89,26 @@
                                         //header('location: profile.php');
                                     //}
                                     $i++;
-                                    $sinhvienID = $r['ID'];
+                                    $ID = $r['ID'];
                                     $ten= $r['Name'];
                                     $sdt = $r['Phone'];
                                     $mail = $r['Email'];
                                     $khoa = $r['Khoa'];
                                     echo "<tr>";
-                                    echo "<td>$sinhvienID</td>";
+                                    echo "<td>$ID</td>";
                                     echo "<td>$ten</td>";
                                     echo "<td>$sdt</td>";
                                     echo "<td>$mail</td>";
                                     echo "<td>$khoa</td>";
-                                    echo " <td>
-                                    <a href='../lib/edit_student.php?id=$sinhvienID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
-                                    <a href='../lib/del_student.php?id=$sinhvienID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
-                                    <a href='#'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
+                                    echo " <td>";
+                                    if (is_teacher()) {
+                                        echo "
+                                        <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
+                                        <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
+                                        ";
+                                    }
+                                   
+                                    echo "<a href='message.php?id=$ID'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
                                     </td>";
                                     echo"</tr>";
                                    // }

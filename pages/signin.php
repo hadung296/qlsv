@@ -19,6 +19,7 @@ if (isset($_POST['signin'])) {
       echo '</br> <p style="color:red"> Sai tên đăng nhập hoặc mật khẩu ! </p>';
     } else {
       $_SESSION['username'] = $myusername;
+      $_SESSION['user_id'] = $result['ID'];
       $_SESSION['is_teacher'] = $result['Is_teacher'];
       if(is_teacher()) {
         //dd($result);

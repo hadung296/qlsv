@@ -3,10 +3,8 @@ include("../lib/connectDB.php");
 include("../lib/helper.php");
 
 session_start();
-
-check_session();
-$username = $_SESSION['username'];
-$query = "SELECT * FROM account where Username = '$username'";
+$ID= $_GET['id'];
+$query = "SELECT * FROM account where ID = '$ID'";
 $result = mysqli_query($connectDB, $query);
 //Hàm này mới lấy ra kết quả
 $num = mysqli_num_rows($result);
@@ -94,53 +92,8 @@ if ($num == 0) {
                                     <img class="card-img-top" src='<?php echo $image_src;  ?>' alt="Card image">
 
                                 </div>
-                                <div class="input-group">
-                                <div class="custom-file">
-                                    <form method="POST" action="" enctype='multipart/form-data'>
-                                    <!-- <input type="file" accept=".png,.jpg,.gif" class="custom-file-input" id="avatar" name="file">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
-                                    <input type='file' class='btn btn-outline-primary btn-sm' name='file' />
-                                    <!-- <input type='submit' class="btn btn-primary" value='Save' name='but_upload'> -->
-                                    <button type="submit" class='btn btn-primary' name="but_upload">Upload</button>
-                                </form>
-                                </div>
                                 
-                                <?php
-                                check_session();
-                                //dd($username);
-                                if(isset($_POST['but_upload'])){
-                                    $name = $_FILES['file']['name'];
-                                    $target_dir = "../upload/";
-                                    $target_file = $target_dir . basename($_FILES["file"]["name"]);
-                                                                    
-                                    // Select file type
-                                    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                                                                            
-                                    // Valid file extensions
-                                    $extensions_arr = array("jpg","jpeg","png","gif");
-                                                                        
-                                    // Check extension
-                                    if( in_array($imageFileType,$extensions_arr) ){
-                                                                        
-                                    // Insert record
-                                    //$query = "INSERT INTO `account` (`Avatar`) values('$name') WHERE Username='$username'";
-                                    $query = "UPDATE account SET Avatar='$name' WHERE Username='$username' " ;
-                                    mysqli_query($connectDB,$query);
-                                                                        
-                                    // Upload file
-                                    move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
-                                                                    
-                                    }
-                                    // $sql = "select Avatar from account where Username='$username'";
-                                    // $result = mysqli_query($connectDB,$sql);
-                                    // $row = mysqli_fetch_array($result);
-
-                                    // $image = $row['Avatar'];
-                                    // $image_src = "upload/".$image;
-                                    
-                                    }
-                                    ?>
-                                </div>
+                               
                             </div>
                             <div class="col-sm-9 col-md-6 col-lg-8">
                                 <div class="card-body">
@@ -167,30 +120,12 @@ if ($num == 0) {
             </div>
             <div class="col-6 col-sm-3">
                 <h2>Message</h2>
-                <?php
-                    // Thiết lập charset utf8
-                        // Kết nối CSDL
-                        mysqli_set_charset($connectDB, "utf8");
-                    
-                        $query = "SELECT * FROM message where user_id_receive = '$ID'";
-                        $result = mysqli_query($connectDB, $query);
-                    
-                        // Thực thi câu truy vấn
-                        //$result = mysqli_query($connectDB, $insert);
-                        $num = mysqli_num_rows($result);
-                        $results =mysqli_fetch_all($result,MYSQLI_ASSOC);
-                        // dd($results);
-                        if ($num == 0) {
-                          echo '</br> <p style="color:red"> Lỗi ! </p>';
-                        } else {?>
-                            <ul>
-                            <?php foreach($results as $ketqua) {?>
-                            <li><?php dd($ketqua); ?></li>
-                        <?php }?>
-                        </ul>
-                    <?php }
-                    
-                ?>
+                <form action="../lib/sent_msg.php?id=<?=$ID ?>" method="POST">
+                <textarea rows="4" cols="50" name="msg">
+                
+                </textarea>
+                <button type="submit" name="submit">Submit</button>
+                </form>
             </div>
         </div>
     </div>

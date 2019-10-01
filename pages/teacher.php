@@ -102,7 +102,7 @@
                                     echo " <td>
                                     <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
                                     <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
-                                    <a href='../pages/profile.php?id=$ID'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
+                                    <a href='../pages/message.php?id=$ID'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
                                     </td>";
                                     echo"</tr>";
                                    // }
