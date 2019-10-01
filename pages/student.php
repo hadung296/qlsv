@@ -32,10 +32,10 @@
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Danh mục bài tập</a>
+                    <a class="nav-link" href="list_exam.php">Danh mục bài tập</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Upload bai tập</a>
+                    <a class="nav-link" href="student_upload.php">Upload bai tập</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>

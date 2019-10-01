@@ -17,10 +17,10 @@ if (isset($_POST['add'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $is_teacher = $_POST['is_teacher'];
-    $name=$_POST['name'];
-    $phone=$_POST['phone'];
-    $mail=$_POST['mail'];
-    $khoa=$_POST['khoa'];
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $mail = $_POST['mail'];
+    $khoa = $_POST['khoa'];
     // Validate Thông Tin Username và Email có bị trùng hay không
 
     // Kết nối CSDL
@@ -39,19 +39,17 @@ if (isset($_POST['add'])) {
 
         // Dừng chương trình
         die();
-    } 
-    else {
+    } else {
         // Ngược lại thì thêm bình thường
         $insert = "INSERT INTO account (`Username`, `Pass`, `Is_teacher`,`Name`,`Phone`,`Email`,`Khoa`) VALUES ('$username','$password','$is_teacher','$name','$phone','$mail','$khoa')";
 
         if (mysqli_query($connectDB, $insert)) {
             echo '<script language="javascript">alert("Thêm thành công"); window.location="../pages/student.php";</script>';
-        } 
-        else {
+        } else {
             echo '<script language="javascript">alert("Có lỗi trong quá trình xử lý"); window.location="add_student.php";</script>';
         }
     }
-mysqli.close($connectDB);
+    mysqli . close($connectDB);
 }
 ?>
 <!DOCTYPE html>
@@ -78,48 +76,48 @@ mysqli.close($connectDB);
             <div class="card-header"><b>Thêm sinh viên</b></div>
             <div class="card-body">
                 <form method="post" action="add_student.php">
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <label for="InputName">Username</label>
-                            <input class="form-control" id="InputName" type="text" name="username">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <label for="InputName">Username</label>
+                                <input class="form-control" id="InputName" type="text" name="username">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="is_teacher">Vai trò</label>
-                    <input class="form-control" id="is_teacher" type="int" placeholder="teacher is 1 - student is 0" name="is_teacher">
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <label for="InputPassword">Password</label>
-                        <input class="form-control" id="InputPassword" type="password" name="password">
+                    <div class="form-group">
+                        <label for="is_teacher">Vai trò</label>
+                        <input class="form-control" id="is_teacher" type="int" placeholder="teacher is 1 - student is 0" name="is_teacher">
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <label for="InputName">Họ tên</label>
-                        <input class="form-control" id="InputName" type="text" name="name">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="InputPassword">Password</label>
+                            <input class="form-control" id="InputPassword" type="password" name="password">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <label for="InputPhone">Số điện thoại</label>
-                        <input class="form-control" id="InputPhone" type="number" name="phone">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="InputName">Họ tên</label>
+                            <input class="form-control" id="InputName" type="text" name="name">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <label for="InputEmail">Email</label>
-                        <input class="form-control" id="InputEmail" type="text" name="mail">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="InputPhone">Số điện thoại</label>
+                            <input class="form-control" id="InputPhone" type="number" name="phone">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <label for="InputKhoa">Khoa</label>
-                        <input class="form-control" id="InputKhoa" type="text" name="khoa">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="InputEmail">Email</label>
+                            <input class="form-control" id="InputEmail" type="text" name="mail">
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="InputKhoa">Khoa</label>
+                            <input class="form-control" id="InputKhoa" type="text" name="khoa">
+                        </div>
+                    </div>
             </div>
             <div class="align-self-center mx-auto">
                 <button type="submit" class="btn btn-primary btn-block" name="add">Thêm sinh viên</button>

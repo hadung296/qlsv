@@ -18,6 +18,7 @@ if ($num == 0) {
   //dd($result);
 }
 //mysqli.close($connectDB);
+
 ?>
 
 <!DOCTYPE html>
@@ -57,10 +58,10 @@ if ($num == 0) {
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Danh mục bài tập</a>
+                    <a class="nav-link" href="list_exam.php">Danh mục bài tập</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Upload bai tập</a>
+                    <a class="nav-link" href="student_upload.php">Upload bai tập</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
@@ -86,7 +87,60 @@ if ($num == 0) {
                         <div class="row">
                             <div class="col-sm-3 col-md-6 col-lg-4">
                                 <div class="card" style="width:250px">
-                                    <img class="card-img-top" src="../img/user1.png" alt="Card image">
+                                <?php 
+                                        $avatar=$result['Avatar'];
+                                        //dd($avatar);
+                                        $image_src = "../upload/".$avatar;
+                                ?>
+                                    <img class="card-img-top" src='<?php echo $image_src;  ?>' alt="Card image">
+
+                                </div>
+                                <div class="input-group">
+                                <div class="custom-file">
+                                    <form method="POST" action="" enctype='multipart/form-data'>
+                                    <!-- <input type="file" accept=".png,.jpg,.gif" class="custom-file-input" id="avatar" name="file">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+                                    <input type='file' class='btn btn-outline-primary btn-sm' name='file' />
+                                    <!-- <input type='submit' class="btn btn-primary" value='Save' name='but_upload'> -->
+                                    <button type="submit" class='btn btn-primary' name="but_upload">Upload</button>
+                                </form>
+                                </div>
+                                
+                                <?php
+                                check_session();
+                                //dd($username);
+                                if(isset($_POST['but_upload'])){
+                                    $name = $_FILES['file']['name'];
+                                    $target_dir = "../upload/";
+                                    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+                                                                    
+                                    // Select file type
+                                    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                                                                            
+                                    // Valid file extensions
+                                    $extensions_arr = array("jpg","jpeg","png","gif");
+                                                                        
+                                    // Check extension
+                                    if( in_array($imageFileType,$extensions_arr) ){
+                                                                        
+                                    // Insert record
+                                    //$query = "INSERT INTO `account` (`Avatar`) values('$name') WHERE Username='$username'";
+                                    $query = "UPDATE account SET Avatar='$name' WHERE Username='$username' " ;
+                                    mysqli_query($connectDB,$query);
+                                                                        
+                                    // Upload file
+                                    move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
+                                                                    
+                                    }
+                                    // $sql = "select Avatar from account where Username='$username'";
+                                    // $result = mysqli_query($connectDB,$sql);
+                                    // $row = mysqli_fetch_array($result);
+
+                                    // $image = $row['Avatar'];
+                                    // $image_src = "upload/".$image;
+                                    
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="col-sm-9 col-md-6 col-lg-8">

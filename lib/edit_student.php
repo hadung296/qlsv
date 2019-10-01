@@ -113,7 +113,7 @@ if(mysqli_num_rows($result) > 0){
                 </div>
             </div>
             <div class="align-self-center mx-auto">
-                <button type="submit" class="btn btn-primary btn-block" name="edit">Sửa sinh viên</button>
+                <button type="submit" class="btn btn-primary btn-block" name="edit">Edit</button>
             </div>
             <?php
 			if (isset($_POST['edit'])) {

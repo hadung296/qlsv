@@ -30,7 +30,6 @@ if (isset($_POST['signin'])) {
       }
     }
   }
-mysqli.close($connectDB);
 }
 ?>
 <!doctype html>
