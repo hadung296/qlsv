@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2019 at 01:20 PM
+-- Generation Time: Oct 02, 2019 at 01:25 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -47,7 +47,9 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`ID`, `Username`, `Pass`, `Is_teacher`, `Name`, `Phone`, `Email`, `Khoa`, `Avatar`) VALUES
 (6, 'admin', 'admin', 1, 'Le van admin', 987654321, 'admin@gmail.com', 'CNTT', 'user1.png'),
 (7, 'dung', 'dung', 0, 'Ha Manh Dung', 113, '113@gmail.com', 'ATTT', 'user3.jpg'),
-(24, 'demo', 'demo', 0, 'Tran Van Demo', 119, '119@gmail.com', 'CNTT', 'logoVT.png');
+(24, 'demo', 'demo', 0, 'Tran Van Demo', 119, '119@gmail.com', 'CNTT', 'logoVT.png'),
+(25, 'test', 'test', 0, 'Nguyen Thi Test', 191, '191@gmail.com', 'chinh tri', NULL),
+(26, 'dell', 'dell', 1, 'Nguyen Van Dell', 2147483647, '112233445566@gmail.com', 'The chat', NULL);
 
 -- --------------------------------------------------------
 
@@ -58,8 +60,16 @@ INSERT INTO `account` (`ID`, `Username`, `Pass`, `Is_teacher`, `Name`, `Phone`, 
 CREATE TABLE `exam` (
   `ID` int(11) NOT NULL,
   `file_path` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `tearcher_user_id` int(11) NOT NULL
+  `teacher_user_id` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `exam`
+--
+
+INSERT INTO `exam` (`ID`, `file_path`, `teacher_user_id`) VALUES
+(2, 'bai tap 1.doc', 'admin'),
+(3, 'mysql_tutorial.pdf', 'dell');
 
 -- --------------------------------------------------------
 
@@ -69,10 +79,20 @@ CREATE TABLE `exam` (
 
 CREATE TABLE `message` (
   `ID` int(11) NOT NULL,
-  `user_id_sent` int(11) NOT NULL,
-  `user_id_receive` int(11) NOT NULL,
+  `user_id_sent` text COLLATE utf8_unicode_ci NOT NULL,
+  `user_id_receive` text COLLATE utf8_unicode_ci NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`ID`, `user_id_sent`, `user_id_receive`, `message`) VALUES
+(1, '7', '24', 'alo 123456 '),
+(2, '7', '24', '123456sadfsadfasdfa'),
+(3, '24', '26', '33'),
+(7, 'admin', '26', 'hell122');
 
 -- --------------------------------------------------------
 
@@ -82,10 +102,20 @@ CREATE TABLE `message` (
 
 CREATE TABLE `student_upload` (
   `ID` int(11) NOT NULL,
-  `student_user_id` int(11) NOT NULL,
+  `student_user_id` text COLLATE utf8_unicode_ci NOT NULL,
   `file_path` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `exam_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `student_upload`
+--
+
+INSERT INTO `student_upload` (`ID`, `student_user_id`, `file_path`, `exam_id`) VALUES
+(3, 'admin', 'giai bai tap 1.DOC', 0),
+(4, 'demo', 'mysql_tutorial.pdf', 0),
+(5, 'admin', 'bai 2.DOC', 0),
+(6, 'dell', 'mysql_tutorial.pdf', 0);
 
 --
 -- Indexes for dumped tables
@@ -123,25 +153,25 @@ ALTER TABLE `student_upload`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `student_upload`
 --
 ALTER TABLE `student_upload`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
