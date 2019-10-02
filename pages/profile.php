@@ -188,8 +188,11 @@ if ($num == 0) {
                         } else {?>
                             <ul>
                             <?php foreach($results as $ketqua) {?>
-                            <li><?php dd($ketqua); 
-                             ?></li>
+                            <li><?php
+                            //  dd($ketqua);
+                                echo("User ID gui ".$ketqua['user_id_sent'].":<br>".$ketqua['message']);
+                                ?>
+                                </li>
                         <?php }?>
                         </ul>
                     <?php } ?>
