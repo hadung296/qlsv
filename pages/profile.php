@@ -57,7 +57,7 @@ if ($num == 0) {
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="list_exam.php">Danh mục bài tập</a>
+                    <a class="nav-link" href="list_exam.php?id=$ID">Danh mục bài tập</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="student_upload.php">Upload bai tập</a>
@@ -158,7 +158,9 @@ if ($num == 0) {
                                         echo "Khoa: $khoa <br>";
                                         ?>
                                     </h4>
-                                    <p class="card-text"></p>
+                                    <form action="../lib/edit_student.php?id=<?=$ID ?>" method="POST">
+                                    <button class="btn btn-primary" type="submit" name="Edit">Sửa thông tin</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -179,18 +181,19 @@ if ($num == 0) {
                         //$result = mysqli_query($connectDB, $insert);
                         $num = mysqli_num_rows($result);
                         $results =mysqli_fetch_all($result,MYSQLI_ASSOC);
-                        // dd($results);
+                        //dd($results);
+
                         if ($num == 0) {
-                          echo '</br> <p style="color:red"> Lỗi ! </p>';
+                          echo '</br> <p style="color:red"> Not message ! </p>';
                         } else {?>
                             <ul>
                             <?php foreach($results as $ketqua) {?>
-                            <li><?php dd($ketqua); ?></li>
+                            <li><?php dd($ketqua); 
+                             ?></li>
                         <?php }?>
                         </ul>
-                    <?php }
+                    <?php } ?>
                     
-                ?>
             </div>
         </div>
     </div>

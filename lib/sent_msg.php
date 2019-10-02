@@ -17,8 +17,10 @@ if (isset($_POST['submit'])) {
     // $level      = isset($_POST['level'])    ? (int)$_POST['level'] : '';
 
     // Lay thong tin
+    $username=$_SESSION['username'];
     $userID=$_SESSION['user_id'];
     $ID=$_GET['id'];
+    //$name=$_GET['Username'];
     $msg = $_POST['msg'];
     // Validate Thông Tin Username và Email có bị trùng hay không
 
@@ -26,7 +28,7 @@ if (isset($_POST['submit'])) {
     mysqli_set_charset($connectDB, "utf8");
 
     // Kiểm tra username hoặc email có bị trùng hay không
-    $insert = "INSERT INTO message (`user_id_sent`, `user_id_receive`, `message`) VALUES ('$userID','$ID','$msg')";
+    $insert = "INSERT INTO message (`user_id_sent`, `user_id_receive`, `message`) VALUES ('$username','$ID','$msg')";
 
 
     // Thực thi câu truy vấn

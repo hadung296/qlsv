@@ -49,7 +49,7 @@ if (isset($_POST['add'])) {
             echo '<script language="javascript">alert("Có lỗi trong quá trình xử lý"); window.location="add_student.php";</script>';
         }
     }
-    mysqli . close($connectDB);
+    mysqli_close($connectDB);
 }
 ?>
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ if (isset($_POST['add'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/qlsv/img/logoVT.png">
-    <title>Thêm sinh viên</title>
+    <title>Thêm danh sách</title>
     <!-- Bootstrap core CSS-->
     <link href="/qlsv/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript-->
@@ -73,7 +73,7 @@ if (isset($_POST['add'])) {
 <body class="">
     <div class="container">
         <div class="card card-register mx-auto mt-5">
-            <div class="card-header"><b>Thêm sinh viên</b></div>
+            <div class="card-header"><b>Thêm thành viên</b></div>
             <div class="card-body">
                 <form method="post" action="add_student.php">
                     <div class="form-group">
@@ -120,7 +120,7 @@ if (isset($_POST['add'])) {
                     </div>
             </div>
             <div class="align-self-center mx-auto">
-                <button type="submit" class="btn btn-primary btn-block" name="add">Thêm sinh viên</button>
+                <button type="submit" class="btn btn-primary btn-block" name="add">Thêm</button>
             </div>
             </form>
             <div class="text-center">

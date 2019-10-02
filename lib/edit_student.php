@@ -55,7 +55,7 @@ if(mysqli_num_rows($result) > 0){
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/qlsv/img/logoVT.png">
-    <title>Sửa sinh viên</title>
+    <title>Sửa danh sách</title>
     <!-- Bootstrap core CSS-->
     <link href="/qlsv/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript-->
@@ -66,20 +66,20 @@ if(mysqli_num_rows($result) > 0){
 <body class="">
     <div class="container">
         <div class="card card-register mx-auto mt-5">
-            <div class="card-header"><b>Sửa sinh viên</b></div>
+            <div class="card-header"><b>Sửa thành viên</b></div>
             <div class="card-body">
                 <form method="post" action="#">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-12">
                             <label for="InputName">Username</label>
-                            <input class="form-control" id="InputName" type="text" name="username" value="<?php echo $result['Username'];?>">
+                            <input class="form-control" id="InputName" type="text" name="username"  value="<?php echo $result['Username']; ?>">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="is_teacher">Vai trò</label>
-                    <input class="form-control" id="is_teacher" type="int" value="<?php $result['Is_teacher']; ?>" name="is_teacher">
+                    <input class="form-control" id="is_teacher" type="int" placeholder="teacher is 1 - student is 0" value="<?php $result['Is_teacher']; ?>" name="is_teacher">
                 </div>
                 <div class="form-group">
                     <div class="form-row">

@@ -32,7 +32,7 @@
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="list_exam.php">Danh mục bài tập</a>
+                    <a class="nav-link" href="list_exam.php?id=$ID ">Danh mục bài tập</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="student_upload.php">Upload bai tập</a>
@@ -111,7 +111,6 @@
                                     echo "<a href='message.php?id=$ID'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
                                     </td>";
                                     echo"</tr>";
-                                   // }
                                     
                                 }
                             }
@@ -121,8 +120,14 @@
                 </table>
             </div>
         </div>
-        <div class="col text-center">                   
-            <a href='../lib/add_student.php'><input class='btn btn-primary center-block' id='add' type='button' value='add_student'></a> 
+        <div class="col text-center"> 
+            <?php       
+            if (is_teacher()){ 
+                echo"        
+                <a href='../lib/add_student.php'><input class='btn btn-primary center-block' id='add' type='button' value='add_student'></a> 
+                ";
+        }
+            ?>
          </div>
     </div>
 </body>

@@ -99,6 +99,7 @@ if ($num == 0) {
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <?php
+                                        //$username=$result['Username'];
                                         $ID=$result['ID'];
                                         $ten= $result['Name'];
                                         $sdt = $result['Phone'];
@@ -121,10 +122,8 @@ if ($num == 0) {
             <div class="col-6 col-sm-3">
                 <h2>Message</h2>
                 <form action="../lib/sent_msg.php?id=<?=$ID ?>" method="POST">
-                <textarea rows="4" cols="50" name="msg">
-                
-                </textarea>
-                <button type="submit" name="submit">Submit</button>
+                <textarea rows="4" cols="50" name="msg"></textarea>
+                <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                 </form>
             </div>
         </div>
