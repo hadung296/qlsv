@@ -73,7 +73,9 @@ if(mysqli_num_rows($result) > 0){
                     <div class="form-row">
                         <div class="col-md-12">
                             <label for="InputName">Username</label>
-                            <input class="form-control" id="InputName" type="text" name="username"  value="<?php echo $result['Username']; ?>">
+                            <input class="form-control" type="text" name="username"  value="<?php echo $result['Username']; ?>" <?php if (!is_teacher()) {
+                             echo'readonly'; 
+                            }?>>
                         </div>
                     </div>
                 </div>
@@ -90,7 +92,9 @@ if(mysqli_num_rows($result) > 0){
                 <div class="form-group">
                     <div class="form-row">
                         <label for="InputName">Họ tên</label>
-                        <input class="form-control" id="InputName" value="<?php echo $result['Name'];?>" type="text" name="name">
+                        <input class="form-control" value="<?php echo $result['Name'];?>" type="text" name="name" <?php if (!is_teacher()) {
+                             echo'readonly'; 
+                            }?>>
                     </div>
                 </div>
                 <div class="form-group">

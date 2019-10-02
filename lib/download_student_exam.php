@@ -35,7 +35,7 @@ include("../lib/helper.php");
     $num = mysqli_num_rows($result);
     $result = $result->fetch_assoc();
     if ($num == 0) {
-      echo '</br> <p style="color:red"> Sai tên đăng nhập hoặc mật khẩu ! </p>';
+      echo '</br> <p style="color:red"> Lỗi ! </p>';
     } else {
         // dd($result);
         $file = "../upload/".$result['file_path'];

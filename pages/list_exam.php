@@ -148,7 +148,7 @@
                                     //     ";
                                     // }
                                    
-                                    echo "<a href='../lib/download.php?id=$ID'><input class='btn btn-primary' id='btnDownload' type='button' value='Download' '></a> 
+                                    echo "<a href='../lib/download_teacher_exam.php?id=$ID'><input class='btn btn-primary' id='btnDownload' type='button' value='Download' '></a> 
                                     </td>";
                                     echo"</tr>";
                                     
