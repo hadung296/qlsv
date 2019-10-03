@@ -3,6 +3,7 @@ include("../lib/connectDB.php");
 include("../lib/helper.php");
 	
     $id = $_GET['id'];
+    //dd($id);
     $query = "SELECT * FROM qlsv.exam where ID='$id'";
     $result = mysqli_query($connectDB, $query);
     //Hàm này mới lấy ra kết quả

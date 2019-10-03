@@ -1,16 +1,12 @@
-
 <?php
-    include("helper.php");
     include("connectDB.php");
-    
-    mysqli_query($connectDB, 'SET NAMES UTF8');
-    session_start();	
+	mysqli_query($connectDB, 'SET NAMES UTF8');
+						
 	if(isset($_GET['id'])){
-    $ID = $_GET['id'];
-    dd($ID);
-	$query = "DELETE FROM message WHERE ID ='$ID'";
+    $id = $_GET['id'];
+	$query = "DELETE FROM `message` WHERE ID='$id'";
 	mysqli_query($connectDB,$query) or die("xóa dữ liệu thất bại");
-    header('location: ../pages/message.php');
-    }
+    header('location:../pages/profile.php');
+	}
 ?>
 			

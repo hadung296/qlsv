@@ -134,7 +134,7 @@ if ($num == 0) {
                 // <!-- Bootstrap core CSS -->
                 
                 // Thiết lập charset utf8
-                header('Content-Type: text/html; charset=utf-8');
+                //header('Content-Type: text/html; charset=utf-8');
                 
                     // Lay thong tin
                 $username=$_SESSION['username'];
@@ -161,12 +161,15 @@ if ($num == 0) {
                         <ul>
                         <?php foreach($results as $ketqua) {?>
                         <li><?php
+                        $id_msg=$ketqua['ID'];
+                        //dd($id_msg);
                         if ($ketqua['user_id_receive']==$ID) {
-                              //  dd($ketqua);
+                        
                         echo("User ID gui ".$ketqua['user_id_sent'].": ".$ketqua['message']);
+                        echo("<br>");
                         echo "
-                            <a href='../lib/edit_message.php'><input class= 'btn btn-primary btn-sm' id='btnSua' type='button' value='Sửa' '></a>   
-                            <a href='../lib/del_message.php?id=$ID''><input class='btn btn-primary btn-sm' id='btnXoa' type='button' value='Xóa'></a> 
+                            <a href='../lib/edit_message.php?id=$id_msg'><input class= 'btn btn-primary btn-sm' id='btnSua' type='button' value='Sửa' '></a>   
+                            <a href='../lib/del_message.php?id=$id_msg'><input class='btn btn-primary btn-sm' type='button' value='Xóa'></a> 
                             ";
                         }
                         ?>
