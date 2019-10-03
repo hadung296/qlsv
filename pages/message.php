@@ -42,8 +42,8 @@ if ($num == 0) {
     <div class="container">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">HOME</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="profile.php?id=$ID">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href='student.php'>Thông tin sinh viên</a>
@@ -121,10 +121,61 @@ if ($num == 0) {
             </div>
             <div class="col-6 col-sm-3">
                 <h2>Message</h2>
+                <div>
                 <form action="../lib/sent_msg.php?id=<?=$ID ?>" method="POST">
                 <textarea rows="4" cols="50" name="msg"></textarea>
                 <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                 </form>
+                </div>
+
+                <div>
+                <?php
+                //session_start();
+                // <!-- Bootstrap core CSS -->
+                
+                // Thiết lập charset utf8
+                header('Content-Type: text/html; charset=utf-8');
+                
+                    // Lay thong tin
+                $username=$_SESSION['username'];
+                //$userID=$_SESSION['user_id'];
+                //dd($userID);
+                $ID=$_GET['id'];
+                //dd($ID);
+                    //$name=$_GET['Username'];
+                //$msg = $_POST['msg'];
+                    // Validate Thông Tin Username và Email có bị trùng hay không
+                
+
+                    // Kết nối CSDL
+                //dd($username);
+                $query = "SELECT * FROM `message` WHERE user_id_sent='$username'";
+                $result = mysqli_query($connectDB, $query);
+                //dd($result);
+                $num = mysqli_num_rows($result);
+                $results =mysqli_fetch_all($result,MYSQLI_ASSOC);
+                        //dd($results);
+                    if ($num == 0 ) {
+                        echo '</br> <p style="color:red"> Not message ! </p>';
+                        } else {?>
+                        <ul>
+                        <?php foreach($results as $ketqua) {?>
+                        <li><?php
+                        if ($ketqua['user_id_receive']==$ID) {
+                              //  dd($ketqua);
+                        echo("User ID gui ".$ketqua['user_id_sent'].": ".$ketqua['message']);
+                        echo "
+                            <a href='../lib/edit_message.php'><input class= 'btn btn-primary btn-sm' id='btnSua' type='button' value='Sửa' '></a>   
+                            <a href='../lib/del_message.php?id=$ID''><input class='btn btn-primary btn-sm' id='btnXoa' type='button' value='Xóa'></a> 
+                            ";
+                        }
+                        ?>
+                        </li>
+                          <?php }?>
+                          </ul>
+                      <?php } ?>
+                
+                </div>
             </div>
         </div>
     </div>
