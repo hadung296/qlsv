@@ -11,7 +11,7 @@
     <link href="/qlsv/bootstrap/css/bootstrap.css" rel="stylesheet" style="text/css">
     <script src="/qlsv/bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
 
-    <title>Thông tin sinh viên</title>
+    <title>Thông tin tìm kiếm</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                     <!-- <a class="nav-link" href='profile.php?id=$ID'><input id='btnHome' type='button' value='HOME'>HOME</a> -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href='student.php'>Thông tin sinh viên</a>
+                    <a class="nav-link" href='student.php'>Thông tin sinh viên</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="teacher.php">Thông tin giảng viên</a>
@@ -41,9 +41,9 @@
                     <a class="nav-link" href="#"></a>
                 </li>
                 <nav class="navbar navbar-expand-sm bg-dark navbar-darks">
-                    <form class="form-inline" action="search.php">
-                        <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search"> -->
-                        <button class="btn btn-success" type="submit" href="search.php">Search</button>
+                    <form class="form-inline" action="#" method="POST">
+                        <input class="form-control mr-sm-2" type="text" name="input" placeholder="Search">
+                        <button class="btn btn-success" type="submit" name="search">Search</button>
                     </form>
                 </nav>
                 <li class="nav-item">
@@ -54,7 +54,7 @@
     </div>
     <div class="container">
         <div class="card">
-            <div class="card-header"><b>Thông tin sinh viên</b></div>
+            <div class="card-header"><b>Tìm kiếm</b></div>
             <div class="card-body">
                 <table class="table">
                 <thead>
@@ -69,15 +69,20 @@
                 </thead>
                 <tbody>
                     <?php
-                        include ("../lib/connectDB.php");
-                        include ("../lib/helper.php");
+                        include("../lib/connectDB.php");
+                        include("../lib/helper.php");
                         session_start();
-                        $query = "SELECT * FROM account WHERE Is_teacher = '0'";
-                        $result = mysqli_query($connectDB, $query);
-                        mysqli_set_charset($connectDB, "utf8");
-							if(mysqli_num_rows($result) > 0){
-                                $i=0;
-								while ($r = mysqli_fetch_assoc($result)){
+                        
+                        if (isset($_POST['search'])) {
+                            $input=$_POST['input']; 
+                            // Lay thong tin
+                            $query = "SELECT * FROM `account` WHERE `Name` LIKE '%$input%'";
+                            $result = mysqli_query($connectDB, $query);
+                            mysqli_set_charset($connectDB, "utf8");
+                            //dd($result);
+							    if(mysqli_num_rows($result) > 0){
+                                    $i=0;
+								    while ($r = mysqli_fetch_assoc($result)){
                                     //$username = $_SESSION['username'];
                                    // $_SESSION['is_teacher'] = $result['Is_teacher'];
                                    // if(is_teacher()) {
@@ -88,32 +93,33 @@
                                         //dd("May la hocj sinh. ");
                                         //header('location: profile.php');
                                     //}
-                                    $i++;
-                                    $ID = $r['ID'];
-                                    $ten= $r['Name'];
-                                    $sdt = $r['Phone'];
-                                    $mail = $r['Email'];
-                                    $khoa = $r['Khoa'];
-                                    echo "<tr>";
-                                    echo "<td>$ID</td>";
-                                    echo "<td>$ten</td>";
-                                    echo "<td>$sdt</td>";
-                                    echo "<td>$mail</td>";
-                                    echo "<td>$khoa</td>";
-                                    echo " <td>";
-                                    if (is_teacher()) {
-                                        echo "
-                                        <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
-                                        <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
-                                        ";
-                                    }
-                                   
-                                    echo "<a href='message.php?id=$ID'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
-                                    </td>";
-                                    echo"</tr>";
+                                        $i++;
+                                        $ID = $r['ID'];
+                                        $ten= $r['Name'];
+                                        $sdt = $r['Phone'];
+                                        $mail = $r['Email'];
+                                        $khoa = $r['Khoa'];
+                                        echo "<tr>";
+                                        echo "<td>$ID</td>";
+                                        echo "<td>$ten</td>";
+                                        echo "<td>$sdt</td>";
+                                        echo "<td>$mail</td>";
+                                        echo "<td>$khoa</td>";
+                                        echo " <td>";
+                                        if (is_teacher()) {
+                                            echo "
+                                            <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
+                                            <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
+                                            ";
+                                        }
+                                    
+                                        echo "<a href='message.php?id=$ID'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
+                                        </td>";
+                                        echo"</tr>";
                                     
                                 }
                             }
+                        }
                         
 					?>
                 </tbody>

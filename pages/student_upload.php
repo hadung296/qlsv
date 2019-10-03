@@ -43,9 +43,9 @@
                     <a class="nav-link" href="#"></a>
                 </li>
                 <nav class="navbar navbar-expand-sm bg-dark navbar-darks">
-                    <form class="form-inline" action="#">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
+                    <form class="form-inline" action="search.php">
+                        <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search"> -->
+                        <button class="btn btn-success" type="submit" href="search.php">Search</button>
                     </form>
                 </nav>
                 <li class="nav-item">
