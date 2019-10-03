@@ -26,7 +26,7 @@ if (isset($_POST['signin'])) {
         //dd("Tao la teacher.");
         header('location: profile.php');
       } else {
-        //dd("May la hocj sinh. m deo co quyen");
+        //dd("May la hocj sinh.");
         header('location: profile.php');
       }
     }

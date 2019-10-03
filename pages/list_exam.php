@@ -1,4 +1,8 @@
-
+<?php
+    include("../lib/connectDB.php");
+    include("../lib/helper.php");
+    session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,17 +64,23 @@
             <div class="input-group">
                 <form class="container" action="#" method="post" enctype="multipart/form-data">
                     <div class="custom-file">
-                        <input type="file" name="file"class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    <?php
+                        if (is_teacher()) {
+                            echo "<input type='file' name='file' class='custom-file-input' id='inputGroupFile01' aria-describedby='inputGroupFileAddon01'>";
+                            echo"<label class='custom-file-label' for='inputGroupFile01'>Choose file</label>";
+                        }
+                    ?>
                     </div>
                     <div>
-                        <button type="submit" class='btn btn-primary' name="btn_1">Upload</button>
+                        <?php
+                        if (is_teacher()) {
+                            echo "<button type='submit' class='btn btn-primary' name='btn_1'>Upload</button>";
+                        }
+                    ?>
                     </div>
                 </form>
                 <?php
-                session_start();
-                include("../lib/connectDB.php");
-                include("../lib/helper.php");
+                //session_start();
 
                 //check_session();
 

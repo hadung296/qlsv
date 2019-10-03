@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2019 at 01:25 PM
+-- Generation Time: Oct 03, 2019 at 07:40 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -89,10 +89,10 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`ID`, `user_id_sent`, `user_id_receive`, `message`) VALUES
-(1, '7', '24', 'alo 123456 '),
-(2, '7', '24', '123456sadfsadfasdfa'),
-(3, '24', '26', '33'),
-(7, 'admin', '26', 'hell122');
+(7, 'admin', '26', 'hell122'),
+(8, 'dung', '6', 'hello dung day '),
+(9, 'dung', '6', 'alo alo 123'),
+(10, 'admin', '7', 'uh tao la Admin day ');
 
 -- --------------------------------------------------------
 
@@ -165,7 +165,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `student_upload`

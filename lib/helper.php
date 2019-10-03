@@ -21,12 +21,3 @@ function check_session()
     }
 }
 
-
-// function isAdmin()
-// {
-// if (isset($_SESSION['username']) && $_SESSION['username']['user_type'] == 'admin' ) {
-// return true;
-// }else{
-// return false;
-// }
-// }
