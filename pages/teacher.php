@@ -106,12 +106,12 @@
                                     echo "<td>$mail</td>";
                                     echo "<td>$khoa</td>";
                                     echo " <td>";
-                                    if (is_teacher()) {
-                                        echo "
-                                        <a href='../lib/edit_info.php?id='$ID''><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
-                                        <a href='../lib/del_student.php?id='$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
-                                        ";
-                                    }
+                                    // if (is_teacher()) {
+                                    //     echo "
+                                    //     <a href='../lib/edit_info.php?id='$ID''><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
+                                    //     <a href='../lib/del_student.php?id='$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
+                                    //     ";
+                                    // }
                                    
                                     echo "<a href='message.php?id=$ID'><input class='btn btn-primary' id='btnChitiet' type='button' value='Chi tiết' '></a> 
                                     </td>";
