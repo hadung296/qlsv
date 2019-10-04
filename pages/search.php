@@ -54,7 +54,7 @@
     </div>
     <div class="container">
         <div class="card">
-            <div class="card-header"><b>Tìm kiếm</b></div>
+            <div class="card-header"><b>Kết quả tìm kiếm</b></div>
             <div class="card-body">
                 <table class="table">
                 <thead>
