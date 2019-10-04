@@ -1,4 +1,9 @@
 <?php
+	
+	session_start();
+ 	 if(isset($_SESSION['username'])){
+?>
+<?php
 // <!-- Bootstrap core CSS -->
 include("../lib/connectDB.php");
 // Thiết lập charset utf8
@@ -86,10 +91,10 @@ mysqli.close($connectDB);
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="is_teacher">Vai trò</label>
                     <input class="form-control" id="is_teacher" type="int" placeholder="teacher is 1 - student is 0" name="is_teacher">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <div class="form-row">
                         <label for="InputPassword">Password</label>
@@ -135,3 +140,9 @@ mysqli.close($connectDB);
 </body>
 
 </html>
+<?php
+	}
+	else {
+		header('location:signin.php');
+	}
+?>

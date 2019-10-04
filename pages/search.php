@@ -1,3 +1,8 @@
+<?php
+	
+	session_start();
+ 	 if(isset($_SESSION['username'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +76,7 @@
                     <?php
                         include("../lib/connectDB.php");
                         include("../lib/helper.php");
-                        session_start();
+                        //session_start();
                         
                         if (isset($_POST['search'])) {
                             $input=$_POST['input']; 
@@ -139,3 +144,9 @@
 </body>
 
 </html>
+<?php
+	}
+	else {
+		header('location:signin.php');
+	}
+?>

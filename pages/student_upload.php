@@ -1,4 +1,8 @@
-
+<?php
+	
+	session_start();
+ 	 if(isset($_SESSION['username'])){
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +72,7 @@
                     </div>
                 </form>
                 <?php
-                session_start();
+                //session_start();
                 include("../lib/connectDB.php");
                 include("../lib/helper.php");
 
@@ -79,7 +83,6 @@
                     //$userID = $_SESSION['user_id'];
                     //$ID = $_GET['id'];
                     $username = $_SESSION['username'];
-
                     $name = $_FILES['file']['name'];
                     $target_dir = "../upload/";
                     $target_file = $target_dir.basename($_FILES["file"]["name"]);
@@ -123,11 +126,14 @@
                     </thead>
                     <tbody>
                     <?php 
+                        
                         //session_start();
+                        $username = $_SESSION['username'];
+                        //dd($username);
                         $query = "SELECT * FROM student_upload";
                         $result = mysqli_query($connectDB, $query);
                         mysqli_set_charset($connectDB, "utf8");
-							if(mysqli_num_rows($result) > 0){
+							if(mysqli_num_rows($result) > 0 ){
                                 $i=0;
 								while ($r = mysqli_fetch_assoc($result)){
                                     
@@ -135,23 +141,23 @@
                                     $ID = $r['ID'];
                                     $file_path= $r['file_path'];
                                     $student_user = $r['student_user_id'];
+                                    if ($username == $student_user){    
+                                        echo "<tr>";
+                                        echo "<td>$ID</td>";
+                                        echo "<td>$file_path</td>";
+                                        echo "<td>$student_user</td>";
+                                        echo " <td>";
+                                        // if (is_teacher()) {
+                                        //     echo "
+                                        //     <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
+                                        //     <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
+                                        //     ";
+                                        // }
                                     
-                                    echo "<tr>";
-                                    echo "<td>$ID</td>";
-                                    echo "<td>$file_path</td>";
-                                    echo "<td>$student_user</td>";
-                                    echo " <td>";
-                                    // if (is_teacher()) {
-                                    //     echo "
-                                    //     <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
-                                    //     <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
-                                    //     ";
-                                    // }
-                                   
-                                    echo "<a href='../lib/download_student_exam.php?id=$ID'><input class='btn btn-primary' id='btnDownload' type='button' value='Download' '></a> 
-                                    </td>";
-                                    echo"</tr>";
-                                    
+                                        echo "<a href='../lib/download_student_exam.php?id=$ID'><input class='btn btn-primary' id='btnDownload' type='button' value='Download' '></a> 
+                                        </td>";
+                                        echo"</tr>";
+                                    }
                                 }
                             }
                         ?>
@@ -163,3 +169,9 @@
 </body>
 
 </html>
+<?php
+	}
+	else {
+		header('location:signin.php');
+	}
+?>

@@ -3,6 +3,7 @@ include("../lib/connectDB.php");
 include("../lib/helper.php");
 
 session_start();
+if(isset($_SESSION['username'])){
 $ID= $_GET['id'];
 $query = "SELECT * FROM account where ID = '$ID'";
 $result = mysqli_query($connectDB, $query);
@@ -185,3 +186,9 @@ if ($num == 0) {
 </body>
 
 </html>
+<?php
+	}
+	else {
+		header('location:signin.php');
+	}
+?>

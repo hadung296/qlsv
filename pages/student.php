@@ -1,3 +1,8 @@
+<?php
+	
+	session_start();
+ 	 if(isset($_SESSION['username'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +37,7 @@
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="list_exam.php?id=$ID ">Danh mục bài tập</a>
+                    <a class="nav-link" href="list_exam.php ">Danh mục bài tập</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="student_upload.php">Upload bai tập</a>
@@ -69,9 +74,9 @@
                 </thead>
                 <tbody>
                     <?php
-                        include ("../lib/connectDB.php");
-                        include ("../lib/helper.php");
-                        session_start();
+                        include("../lib/connectDB.php");
+                        include("../lib/helper.php");
+                        //session_start();
                         $query = "SELECT * FROM account WHERE Is_teacher = '0'";
                         $result = mysqli_query($connectDB, $query);
                         mysqli_set_charset($connectDB, "utf8");
@@ -103,8 +108,8 @@
                                     echo " <td>";
                                     if (is_teacher()) {
                                         echo "
-                                        <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
-                                        <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
+                                        <a href='../lib/edit_info.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
+                                        <a href='../lib/del_student.php?id='$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
                                         ";
                                     }
                                    
@@ -133,3 +138,9 @@
 </body>
 
 </html>
+<?php
+	}
+	else {
+		header('location:signin.php');
+	}
+?>

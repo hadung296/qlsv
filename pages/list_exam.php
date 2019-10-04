@@ -2,6 +2,7 @@
     include("../lib/connectDB.php");
     include("../lib/helper.php");
     session_start();
+    if(isset($_SESSION['username'])){
 ?>
 
 <!DOCTYPE html>
@@ -173,3 +174,9 @@
 </body>
 
 </html>
+<?php
+	}
+	else {
+		header('location:signin.php');
+	}
+?>
