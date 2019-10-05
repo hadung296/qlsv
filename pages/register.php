@@ -1,8 +1,4 @@
-<?php
-	
-	session_start();
- 	 if(isset($_SESSION['username'])){
-?>
+
 <?php
 // <!-- Bootstrap core CSS -->
 include("../lib/connectDB.php");
@@ -140,9 +136,3 @@ mysqli.close($connectDB);
 </body>
 
 </html>
-<?php
-	}
-	else {
-		header('location:signin.php');
-	}
-?>
