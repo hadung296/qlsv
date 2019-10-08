@@ -141,22 +141,40 @@
                                     $ID = $r['ID'];
                                     $file_path= $r['file_path'];
                                     $student_user = $r['student_user_id'];
-                                    if ($username == $student_user){    
+                                    if (is_teacher()){
                                         echo "<tr>";
                                         echo "<td>$ID</td>";
                                         echo "<td>$file_path</td>";
                                         echo "<td>$student_user</td>";
                                         echo " <td>";
-                                        // if (is_teacher()) {
-                                        //     echo "
-                                        //     <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
-                                        //     <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
-                                        //     ";
-                                        // }
-                                    
+                                            // if (is_teacher()) {
+                                            //     echo "
+                                            //     <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
+                                            //     <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
+                                            //     ";
+                                            // }
+                                        
                                         echo "<a href='../lib/download_student_exam.php?id=$ID'><input class='btn btn-primary' id='btnDownload' type='button' value='Download' '></a> 
                                         </td>";
                                         echo"</tr>";
+                                            }
+                                    elseif ($username == $student_user){    
+                                            echo "<tr>";
+                                            echo "<td>$ID</td>";
+                                            echo "<td>$file_path</td>";
+                                            echo "<td>$student_user</td>";
+                                            echo " <td>";
+                                            // if (is_teacher()) {
+                                            //     echo "
+                                            //     <a href='../lib/edit_student.php?id=$ID'><input class= 'btn btn-primary' id='btnSua' type='button' value='Sửa' '></a>   
+                                            //     <a href='../lib/del_student.php?id=$ID''><input class='btn btn-primary' id='btnXoa' type='button' value='Xóa'></a> 
+                                            //     ";
+                                            // }
+                                        
+                                            echo "<a href='../lib/download_student_exam.php?id=$ID'><input class='btn btn-primary' id='btnDownload' type='button' value='Download' '></a> 
+                                            </td>";
+                                            echo"</tr>";
+                                    
                                     }
                                 }
                             }
