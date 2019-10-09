@@ -61,12 +61,12 @@ if (isset($_POST['add'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/qlsv/img/logoVT.png">
+    <link rel="icon" href="../img/logoVT.png">
     <title>Thêm danh sách</title>
     <!-- Bootstrap core CSS-->
-    <link href="/qlsv/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript-->
-    <script src="qlsv/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 

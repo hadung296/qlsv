@@ -41,23 +41,23 @@ if (isset($_POST['signin'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="/qlsv/img/logoVT.png">
+  <link rel="icon" href="../img/logoVT.png">
 
   <title>Signin</title>
 
   <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/"> -->
 
   <!-- Bootstrap core CSS -->
-  <link href="/qlsv/bootstrap/css/bootstrap.min.css" rel="stylesheet" style="text/css">
-  <script src="/qlsv/bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" style="text/css">
+  <script src="../bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
 
   <!-- Custom styles for this template -->
-  <link href="/qlsv/bootstrap/css/signin.css" rel="stylesheet">
+  <link href="../bootstrap/css/signin.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
   <form class="form-signin" action="" method="POST">
-    <img class="mb-4" src="/qlsv/img/logoVT.png" alt="" width="110" height="80">
+    <img class="mb-4" src="../img/logoVT.png" alt="" width="110" height="80">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputUser" class="sr-only">User</label>
     <input type="name" id="inputUser" class="form-control" name="txtusername" placeholder="User" required autofocus>

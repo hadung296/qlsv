@@ -28,15 +28,15 @@ if ($num == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/qlsv/img/logoVT.png">
+    <link rel="icon" href="../img/logoVT.png">
 
     <title>Profile</title>
 
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/"> -->
 
     <!-- Bootstrap core CSS -->
-    <link href="/qlsv/bootstrap/css/bootstrap.min.css" rel="stylesheet" style="text/css">
-    <script src="/qlsv/bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" style="text/css">
+    <script src="../bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
 
 </head>
 

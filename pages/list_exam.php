@@ -12,11 +12,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="/qlsv/img/logoVT.png">
+    <link rel="icon" href="../img/logoVT.png">
     <!-- Bootstrap core CSS -->
-    <link href="/qlsv/bootstrap/css/bootstrap.min.css" rel="stylesheet" style="text/css">
-    <link href="/qlsv/bootstrap/css/bootstrap.css" rel="stylesheet" style="text/css">
-    <script src="/qlsv/bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" style="text/css">
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" style="text/css">
+    <script src="../bootstrap/js/bootstrap.min.js" rel="stylesheet" style="text/javascript"> </script>
 
     <title>Danh mục bài tập</title>
 </head>
