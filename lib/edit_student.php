@@ -123,14 +123,15 @@ if(mysqli_num_rows($result) > 0){
 			if (isset($_POST['edit'])) {
                             
                 // Lay thong tin
-                $username = $_GET['Username'];
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                $is_teacher = $_POST['is_teacher'];
-                $name=$_POST['name'];
-                $phone=$_POST['phone'];
-                $mail=$_POST['mail'];
-                $khoa=$_POST['khoa'];
+                $username = mysqli_real_escape_string($connectDB,$_GET['Username']);
+                $username = mysqli_real_escape_string($connectDB,$_POST['username']);
+                $password = mysqli_real_escape_string($connectDB,$_POST['password']);
+                $is_teacher = mysqli_real_escape_string($connectDB,$_POST['is_teacher']);
+                $name=mysqli_real_escape_string($connectDB,$_POST['name']);
+                $phone=mysqli_real_escape_string($connectDB,$_POST['phone']);
+                $mail=mysqli_real_escape_string($connectDB,$_POST['mail']);
+                $khoa=mysqli_real_escape_string($connectDB,$_POST['khoa']);
+                $password=md5($password);
 
                 $update = "UPDATE account SET Username= '$username', Pass='$password', Is_teacher='$is_teacher', Name ='$name', Phone='$phone', Email='$mail', Khoa='$khoa' WHERE Username='$username' " ;
             

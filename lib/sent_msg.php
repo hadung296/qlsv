@@ -21,9 +21,9 @@ if (isset($_POST['submit'])) {
     $userID=$_SESSION['user_id'];
     $ID=$_GET['id'];
     //$name=$_GET['Username'];
-    $msg = $_POST['msg'];
+    $msg = htmlentities($_POST['msg'],ENT_COMPAT,'UTF-8');
     // Validate Thông Tin Username và Email có bị trùng hay không
-
+    //dd($msg);
     // Kết nối CSDL
     mysqli_set_charset($connectDB, "utf8");
 

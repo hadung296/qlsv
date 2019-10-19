@@ -66,7 +66,7 @@ else {
                 //$username = $_GET['Username'];
                 $id=$_GET['id'];
                 //dd($id);
-                $new_msg = $_POST['new_message'];
+                $new_msg = htmlentities($_POST['new_message'],ENT_COMPAT,'UTF-8');
 
                 $update = "UPDATE message SET message='$new_msg' WHERE ID='$id' ";
             

@@ -8,8 +8,9 @@ if (isset($_POST['signin'])) {
   if (empty($_POST['txtusername']) or empty($_POST['txtpasswd'])) {
     echo ' </br> <p style="color:red"> vui lòng nhập đầy đủ username và password !</p>';
   } else {
-    $myusername = $_POST['txtusername'];
-    $mypassword = $_POST['txtpasswd'];
+    $myusername = mysqli_real_escape_string($connectDB,$_POST['txtusername']);
+    $mypassword = mysqli_real_escape_string($connectDB,$_POST['txtpasswd']);
+    $mypassword=md5($mypassword);
     $query = "SELECT * FROM account where Username = '$myusername' and Pass = '$mypassword'";
     $result = mysqli_query($connectDB, $query);
     //Hàm này mới lấy ra kết quả
